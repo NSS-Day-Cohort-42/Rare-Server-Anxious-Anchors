@@ -62,6 +62,36 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_category(id)}"
                 else:
                     response = f"{get_all_categories()}"
+
+            elif resource == "posts":
+                if id is not None:
+                    response = f"{get_single_post(id)}"
+                else:
+                    response = f"{get_all_posts()}"
+
+            elif resource == "tags":
+                if id is not None:
+                    response = f"{get_single_tag(id)}"
+                else:
+                    response = f"{get_all_tags()}"
+
+            elif resource == "posttags":
+                if id is not None:
+                    response = f"{get_single_posttag(id)}"
+                else:
+                    response = f"{get_all_posttags()}"
+
+            elif resource == "users":
+                if id is not None:
+                    response = f"{get_single_user(id)}"
+                else:
+                    response = f"{get_all_users()}"
+
+            elif resource == "comments":
+                if id is not None:
+                    response = f"{get_single_comment(id)}"
+                else:
+                    response = f"{get_all_comments()}"
             
 
 
