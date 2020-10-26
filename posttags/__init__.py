@@ -1,0 +1,1 @@
+from .request import get_all_posttags, get_single_posttag
