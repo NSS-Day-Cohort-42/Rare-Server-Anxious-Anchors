@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from categories import get_all_categories, get_single_category
+from posttags import get_all_posttags, get_single_posttag
 
 
 class HandleRequests(BaseHTTPRequestHandler):
