@@ -30,6 +30,27 @@ def get_all_comments():
 
     return json.dumps(comments)
 
+def get_single_comment(id):
+    with sqlite3.connect("./rare.db") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+	    SELECT
+            c.id,
+            c.commentBody,
+            c.userId,
+            c.postId
+        FROM Comment c
+        WHERE c.id = ?
+        """, ( id, ))
+
+        data = db_cursor.fetchone()
+
+        comment = Comment(data['id'], data['commentBody'],data['userId'], data['postId'])
+        
+        return json.dumps(comment.__dict__)
+
 
 
 
