@@ -3,6 +3,7 @@ import json
 from categories import get_all_categories, get_single_category
 from tags import get_all_tags, get_single_tag
 from posts import get_all_posts, get_single_post
+from users import get_all_users, get_single_user
 
 
 class HandleRequests(BaseHTTPRequestHandler):
