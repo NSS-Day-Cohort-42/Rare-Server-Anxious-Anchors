@@ -42,14 +42,15 @@ def get_single_posttag(id):
         SELECT
             pt.id,
             pt.postId,
-            pt.tagId,
-        FROM Posttags pt
-         WHERE a.id = ?
+            pt.tagId
+
+        FROM Posttag pt
+         WHERE pt.id = ?
         """, ( id, ))
 
   
         data = db_cursor.fetchone()
 
-        posttags = Posttags(row['id'], row['postId'], row['tagId'])
+        posttags = Posttag(data['id'], data['postId'], data['tagId'])
 
         return json.dumps(posttags.__dict__)
