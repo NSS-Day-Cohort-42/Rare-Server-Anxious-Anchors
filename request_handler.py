@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from categories import get_all_categories, get_single_category
+from users import get_all_users, get_single_user
 
 
 class HandleRequests(BaseHTTPRequestHandler):
