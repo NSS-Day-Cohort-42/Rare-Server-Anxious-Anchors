@@ -5,6 +5,7 @@ from comments import get_all_comments
 from tags import get_all_tags, get_single_tag
 from posts import get_all_posts, get_single_post
 from users import get_all_users, get_single_user
+from posttags import get_all_posttags, get_single_posttag
 
 
 class HandleRequests(BaseHTTPRequestHandler):
