@@ -6,6 +6,14 @@ CREATE TABLE `User` (
     `lastName` TEXT NOT NULL,
     `displayName` TEXT NOT NULL,
     `photo` TEXT,
+<<<<<<< HEAD
+    `profileCreation` INTEGER NOT NULL,
+    `profileType` TEXT NOT NULL
+);
+
+
+DROP TABLE 'Tag'
+=======
     `profileCreation` INT NOT NULL,
     `profileType` TEXT NOT NULL
 );
@@ -18,6 +26,7 @@ INSERT INTO `User` VALUES (null, "ellabee222@icloud.com", "1234", "Ella", "Baume
 DROP TABLE `User`;
 
 
+>>>>>>> main
 CREATE TABLE `Tag` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     `name` TEXT NOT NULL
@@ -60,10 +69,26 @@ CREATE TABLE `Post` (
     FOREIGN KEY(`CategoryId`) REFERENCES `Category`(`id`)
 );
 
+<<<<<<< HEAD
+CREATE TABLE `Posttag` (
+    `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `postId` INTEGER NOT NULL,
+    `tagId` INTEGER NOT NULL,
+    FOREIGN KEY(`postId`) REFERENCES `Post`(`id`),
+    FOREIGN KEY(`tagId`) REFERENCES `Tag`(`id`)
+);
+
+
+INSERT INTO `User` VALUES (null, "Madi@Madi.com", "password", "Madi", "Peper", "","", 1601234567890, "Admin");
+INSERT INTO `User` VALUES (null, "Pete@Pete.com", "password", "Peter", "Pickles", "","", 1601234567890, "Admin");
+INSERT INTO `User` VALUES (null, "Bradly@Bradly.com", "password", "Bradly", "Braderson", "","", 1601234567890, "Admin");
+
+=======
 INSERT INTO `Post` VALUES (null, "This is a post about nothing.  I'm basically just trying this out.", 1603380251006, "Post About Nothing", 2, 1);
 INSERT INTO `Post` VALUES (null, "This is a post about something.  Although it's not really anything.", 1502380251006, "Post About Nothing", 1, 4);
 INSERT INTO `Post` VALUES (null, "This is a post.", 1303380251006, "It's just a post", 2, 3);
 INSERT INTO `Post` VALUES (null, "I like dogs.", 1403380251006, "Post About Dogs", 1, 2);
+>>>>>>> main
 
 DROP TABLE `Post`;
 
@@ -77,15 +102,34 @@ CREATE TABLE `Comment` (
     FOREIGN KEY(`postId`) REFERENCES `Post`(`id`)
 );
 
+<<<<<<< HEAD
+INSERT INTO `Tag` VALUES (null, 'tag title');
+INSERT INTO `Tag` VALUES (null, 'tag title');
+INSERT INTO `Tag` VALUES (null, 'tag title');
+
+
+
+INSERT INTO `Comment` VALUES (null, "comment body", 1, 2);
+INSERT INTO `Comment` VALUES (null, "coment body", 1, 2);
+INSERT INTO `Comment` VALUES (null, "comment body", 1, 2);
+
+=======
 INSERT INTO `Comment` VALUES (null, "Hi this is a test comment.  I wonder if it's going to work", 1, 2);
 INSERT INTO `Comment` VALUES (null, "Wow great Story", 1, 3);
 INSERT INTO `Comment` VALUES (null, "You write so well", 4, 4);
 INSERT INTO `Comment` VALUES (null, "Amazing content", 3, 2);
 INSERT INTO `Comment` VALUES (null, "I didn't like it so much", 2, 3);
 INSERT INTO `Comment` VALUES (null, "Worst read ever!!", 2, 1);
+>>>>>>> main
 
 DROP TABLE `Comment`;
 
+<<<<<<< HEAD
+INSERT INTO `Post` VALUES (null, "Title", "Stuff", 2, 4, 1);
+INSERT INTO `Post` VALUES (null, "Title", "things", 2, 1, 1);
+INSERT INTO `Post` VALUES (null, "Title", "Things", 2, 4, 2);
+=======
+>>>>>>> main
 
 CREATE TABLE `Posttag` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -95,9 +139,24 @@ CREATE TABLE `Posttag` (
     FOREIGN KEY(`tagId`) REFERENCES `Tag`(`id`)
 );
 
+<<<<<<< HEAD
+INSERT INTO `Posttag` VALUES (null, 3, 1);
+INSERT INTO `Posttag` VALUES (null, 1, 1);
+INSERT INTO `Posttag` VALUES (null, 3, 2);
+
+
+
+INSERT INTO `Category` VALUES (null, "Programming");
+INSERT INTO `Category` VALUES (null, "Nature");
+INSERT INTO `Category` VALUES (null, "Food");
+
+
+
+=======
 INSERT INTO `Posttag` VALUES (null, 2, 3);
 INSERT INTO `Posttag` VALUES (null, 1, 1);
 INSERT INTO `Posttag` VALUES (null, 4, 4);
+>>>>>>> main
 
 DROP TABLE `Posttag`;
 
