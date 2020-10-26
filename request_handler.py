@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from categories import get_all_categories, get_single_category
+from tags import get_all_tags, get_single_tag
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -63,11 +64,11 @@ class HandleRequests(BaseHTTPRequestHandler):
                 else:
                     response = f"{get_all_categories()}"
 
-            elif resource == "posts":
-                if id is not None:
-                    response = f"{get_single_post(id)}"
-                else:
-                    response = f"{get_all_posts()}"
+            # elif resource == "posts":
+            #     if id is not None:
+            #         response = f"{get_single_post(id)}"
+            #     else:
+            #         response = f"{get_all_posts()}"
 
             elif resource == "tags":
                 if id is not None:
@@ -75,23 +76,23 @@ class HandleRequests(BaseHTTPRequestHandler):
                 else:
                     response = f"{get_all_tags()}"
 
-            elif resource == "posttags":
-                if id is not None:
-                    response = f"{get_single_posttag(id)}"
-                else:
-                    response = f"{get_all_posttags()}"
+            # elif resource == "posttags":
+            #     if id is not None:
+            #         response = f"{get_single_posttag(id)}"
+            #     else:
+            #         response = f"{get_all_posttags()}"
 
-            elif resource == "users":
-                if id is not None:
-                    response = f"{get_single_user(id)}"
-                else:
-                    response = f"{get_all_users()}"
+            # elif resource == "users":
+            #     if id is not None:
+            #         response = f"{get_single_user(id)}"
+            #     else:
+            #         response = f"{get_all_users()}"
 
-            elif resource == "comments":
-                if id is not None:
-                    response = f"{get_single_comment(id)}"
-                else:
-                    response = f"{get_all_comments()}"
+            # elif resource == "comments":
+            #     if id is not None:
+            #         response = f"{get_single_comment(id)}"
+            #     else:
+            #         response = f"{get_all_comments()}"
             
 
 
