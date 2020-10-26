@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from categories import get_all_categories, get_single_category
+from comments import get_all_comments
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -123,4 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

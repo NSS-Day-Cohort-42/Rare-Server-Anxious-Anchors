@@ -6,10 +6,12 @@ CREATE TABLE `User` (
     `lastName` TEXT NOT NULL,
     `displayName` TEXT NOT NULL,
     `photo` TEXT,
-    `profileCreation` TEXT NOT NULL,
+    `profileCreation` INTEGER NOT NULL,
     `profileType` TEXT NOT NULL
 );
 
+
+DROP TABLE 'Tag'
 CREATE TABLE `Tag` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     `name` TEXT NOT NULL
@@ -49,40 +51,40 @@ CREATE TABLE `Posttag` (
 );
 
 
+INSERT INTO `User` VALUES (null, "Madi@Madi.com", "password", "Madi", "Peper", "","", 1601234567890, "Admin");
+INSERT INTO `User` VALUES (null, "Pete@Pete.com", "password", "Peter", "Pickles", "","", 1601234567890, "Admin");
+INSERT INTO `User` VALUES (null, "Bradly@Bradly.com", "password", "Bradly", "Braderson", "","", 1601234567890, "Admin");
 
 
 
-INSERT INTO `Tag` VALUES (null, 'Nashville North');
-INSERT INTO `Tag` VALUES (null, 'Nashville North');
-INSERT INTO `Tag` VALUES (null, 'Nashville North');
 
 
-INSERT INTO `User` VALUES (null, "Madi Peper", "35498 Madison Ave", "Madi Peper", "35498 Madison Ave", "Madi Peper", "35498 Madison Ave", "Madi Peper", "Madi Peper");
-INSERT INTO `User` VALUES (null, "Madi Peper", "35498 Madison Ave", "Madi Peper", "35498 Madison Ave", "Madi Peper", "35498 Madison Ave", "Madi Peper", "Madi Peper");
-INSERT INTO `User` VALUES (null, "Madi Peper", "35498 Madison Ave", "Madi Peper", "35498 Madison Ave", "Madi Peper", "35498 Madison Ave", "Madi Peper", "Madi Peper");
+INSERT INTO `Tag` VALUES (null, 'tag title');
+INSERT INTO `Tag` VALUES (null, 'tag title');
+INSERT INTO `Tag` VALUES (null, 'tag title');
 
 
 
-INSERT INTO `Comment` VALUES (null, "Mo Silvera", 1, 2);
-INSERT INTO `Comment` VALUES (null, "Bryan Nilsen", 1, 2);
-INSERT INTO `Comment` VALUES (null, "Jenna Solis", 1, 2);
+INSERT INTO `Comment` VALUES (null, "comment body", 1, 2);
+INSERT INTO `Comment` VALUES (null, "coment body", 1, 2);
+INSERT INTO `Comment` VALUES (null, "comment body", 1, 2);
 
 
 
-INSERT INTO `Post` VALUES (null, "Snickers", "Recreation", 2, 4, 1);
-INSERT INTO `Post` VALUES (null, "Jax", "Treatment", 2, 1, 1);
-INSERT INTO `Post` VALUES (null, "Falafel", "Treatment", 2, 4, 2);
+INSERT INTO `Post` VALUES (null, "Title", "Stuff", 2, 4, 1);
+INSERT INTO `Post` VALUES (null, "Title", "things", 2, 1, 1);
+INSERT INTO `Post` VALUES (null, "Title", "Things", 2, 4, 2);
 
 
-INSERT INTO `Posttag` VALUES (null, 4, 1);
+INSERT INTO `Posttag` VALUES (null, 3, 1);
 INSERT INTO `Posttag` VALUES (null, 1, 1);
-INSERT INTO `Posttag` VALUES (null, 4, 2);
+INSERT INTO `Posttag` VALUES (null, 3, 2);
 
 
 
-INSERT INTO `Category` VALUES (null, "Snickers");
-INSERT INTO `Category` VALUES (null, "Jax");
-INSERT INTO `Category` VALUES (null, "Falafel");
+INSERT INTO `Category` VALUES (null, "Programming");
+INSERT INTO `Category` VALUES (null, "Nature");
+INSERT INTO `Category` VALUES (null, "Food");
 
 
 
