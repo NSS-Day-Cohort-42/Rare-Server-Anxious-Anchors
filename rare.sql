@@ -64,6 +64,7 @@ DROP TABLE `Post`;
 
 CREATE TABLE `Comment` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    'commentSubject' TEXT NOT NULL,
     `commentBody` TEXT NOT NULL,
     `userId` INTEGER NOT NULL,
     `postId` INTEGER NOT NULL,
@@ -71,12 +72,11 @@ CREATE TABLE `Comment` (
     FOREIGN KEY(`postId`) REFERENCES `Post`(`id`)
 );
 
-INSERT INTO `Comment` VALUES (null, "Hi this is a test comment.  I wonder if it's going to work", 1, 2);
-INSERT INTO `Comment` VALUES (null, "Wow great Story", 1, 3);
-INSERT INTO `Comment` VALUES (null, "You write so well", 4, 4);
-INSERT INTO `Comment` VALUES (null, "Amazing content", 3, 2);
-INSERT INTO `Comment` VALUES (null, "I didn't like it so much", 2, 3);
-INSERT INTO `Comment` VALUES (null, "Worst read ever!!", 2, 1);
+INSERT INTO `Comment` VALUES (null, "Math", "Hi this is a test comment.  I wonder if it's going to work", 1, 2);
+INSERT INTO `Comment` VALUES (null, "Math", "Wow great Story", 1, 3);
+INSERT INTO `Comment` VALUES (null, "Math","You write so well", 4, 4);
+INSERT INTO `Comment` VALUES (null,"Math", "Amazing content", 3, 2);
+INSERT INTO `Comment` VALUES (null, "Math","I didn't like it so much", 2, 3);
 
 DROP TABLE `Comment`;
 
