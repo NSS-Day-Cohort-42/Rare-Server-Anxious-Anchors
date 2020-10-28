@@ -2,10 +2,10 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from login import handlelogin
 from categories import get_all_categories, get_single_category
-from comments import get_all_comments, get_single_comment
+from comments import get_all_comments, get_single_comment,create_comment
 from posttags import get_all_posttags, get_single_posttag
 from tags import get_all_tags, get_single_tag
-from posts import get_all_posts, get_single_post
+from posts import get_all_posts, get_single_post, delete_post
 from users import get_all_users, get_single_user
 from posttags import get_all_posttags, get_single_posttag
 
@@ -119,7 +119,10 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "login":
             print(post_body)
             new_item = handlelogin(post_body)
-        # response = f"received post request:<br>{post_body}"
+
+        if resource == "comments":
+            new_item = create_comment(post_body)
+ 
         self.wfile.write(f"{new_item}".encode())
 
 
@@ -127,6 +130,29 @@ class HandleRequests(BaseHTTPRequestHandler):
     # It handles any PUT request.
     def do_PUT(self):
         self.do_POST()
+
+    def do_DELETE(self):
+        self._set_headers(204)
+
+        (resource, id) = self.parse_url(self.path)
+
+        if resource == "comments":
+            delete_comment(id)
+
+        if resource == "posts":
+            delete_post(id)
+
+        if resource == "tags":
+            delete_tag(id)
+
+        if resource == "post_tags":
+            remove_post_tag(id)
+
+        if resource == "categories":
+            delete_category(id)
+
+        self.wfile.write("".encode())
+
 
 
 # This function is not inside the class. It is the starting
