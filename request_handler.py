@@ -5,7 +5,7 @@ from categories import get_all_categories, get_single_category
 from comments import get_all_comments, get_single_comment
 from posttags import get_all_posttags, get_single_posttag
 from tags import get_all_tags, get_single_tag
-from posts import get_all_posts, get_single_post
+from posts import get_all_posts, get_single_post, create_post
 from users import get_all_users, get_single_user
 from posttags import get_all_posttags, get_single_posttag
 
@@ -111,14 +111,15 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
+
         post_body = json.loads(post_body)
 
         (resource, id) = self.parse_url(self.path)
         new_item = None
         
-        if resource == "login":
+        if resource == "posts":
             print(post_body)
-            new_item = handlelogin(post_body)
+            new_item = create_post(post_body)
         # response = f"received post request:<br>{post_body}"
         self.wfile.write(f"{new_item}".encode())
 
