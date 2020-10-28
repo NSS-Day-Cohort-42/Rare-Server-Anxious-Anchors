@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from login import handlelogin
 from categories import get_all_categories, get_single_category
 from posttags import get_all_posttags, get_single_posttag
 from comments import get_all_comments
@@ -110,8 +111,16 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
-        response = f"received post request:<br>{post_body}"
-        self.wfile.write(response.encode())
+        post_body = json.loads(post_body)
+
+        (resource, id) = self.parse_url(self.path)
+        new_item = None
+        
+        if resource == "login":
+            print(post_body)
+            new_item = handlelogin(post_body)
+        # response = f"received post request:<br>{post_body}"
+        self.wfile.write(f"{new_item}".encode())
 
 
     # Here's a method on the class that overrides the parent's method.
