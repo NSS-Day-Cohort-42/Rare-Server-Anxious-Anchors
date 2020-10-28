@@ -87,8 +87,6 @@ def get_single_post(id):
         # Create an animal instance from the current row
         post = Post(data['id'], data['postBody'], data['postDate'], data['title'], data['userId'], data['categoryId'])
         user = User("", "", "", "", "", data['displayName'], "", "", "")
-        category = Category("", row['name'])
         post.user = user.__dict__
-        post.category = category.__dict__
 
     return json.dumps(post.__dict__)
