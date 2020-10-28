@@ -1,6 +1,8 @@
+from models import User
+from models import Category
+from models import Post
 import sqlite3
 import json
-from models import Post
 
 
 
@@ -14,15 +16,21 @@ def get_all_posts():
 
         # Write the SQL query to get the information you want
         db_cursor.execute("""
-        SELECT
+        SELECT 
             p.id,
             p.postBody,
             p.postDate,
             p.title,
             p.userId,
-            p.categoryId
-
+            p.categoryId,
+            c.name,
+            u.firstName,
+            u.lastName
         FROM Post p
+        JOIN User u
+            ON u.id = p.userId
+        JOIN Category c
+            ON c.id = p.categoryId;
         """)
 
         # Initialize an empty list to hold all animal representations
@@ -39,6 +47,11 @@ def get_all_posts():
             # exact order of the parameters defined in the
             # Animal class above.
             post = Post(row['id'], row['postBody'], row['postDate'], row['title'], row['userId'], row['categoryId'])
+            user = User("", "", "", row['firstName'], row['lastName'], "", "", "", "")
+            category = Category("", row['name'])
+
+            post.user = user.__dict__
+            post.category = category.__dict__
 
             posts.append(post.__dict__)
 
@@ -70,5 +83,7 @@ def get_single_post(id):
 
         # Create an animal instance from the current row
         post = Post(data['id'], data['postBody'], data['postDate'], data['title'], data['userId'], data['categoryId'])
+
+
 
     return json.dumps(post.__dict__)
