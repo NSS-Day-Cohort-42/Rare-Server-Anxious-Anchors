@@ -14,8 +14,11 @@ def get_all_posttags():
             pt.id,
             pt.postId,
             pt.tagId
-
         FROM Posttag pt
+        JOIN Post p
+            ON p.id = pt.postId
+        JOIN Tag t
+            ON t.id = pt.tagId
         """)
 
         posttags = []
