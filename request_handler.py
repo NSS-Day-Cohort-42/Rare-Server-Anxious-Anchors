@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from login import handlelogin
 from categories import get_all_categories, get_single_category
-from comments import get_all_comments, get_single_comment
+from comments import get_all_comments, get_single_comment,create_comment
 from posttags import get_all_posttags, get_single_posttag
 from tags import get_all_tags, get_single_tag
 from posts import get_all_posts, get_single_post
@@ -119,7 +119,10 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "login":
             print(post_body)
             new_item = handlelogin(post_body)
-        # response = f"received post request:<br>{post_body}"
+
+        if resource == "comments":
+            new_item = create_comment(post_body)
+ 
         self.wfile.write(f"{new_item}".encode())
 
 
