@@ -1,8 +1,10 @@
+from models import category
 from models import User
 from models import Category
 from models import Post
 import sqlite3
 import json
+
 
 
 
@@ -72,9 +74,10 @@ def get_single_post(id):
             p.postDate,
             p.title,
             p.userId,
-            p.categoryId
-
+            p.categoryId,
+            u.displayName
         FROM Post p
+        JOIN User u ON u.id = p.userId
         WHERE p.id = ?
         """, (id,))
 
@@ -83,7 +86,9 @@ def get_single_post(id):
 
         # Create an animal instance from the current row
         post = Post(data['id'], data['postBody'], data['postDate'], data['title'], data['userId'], data['categoryId'])
-
-
+        user = User("", "", "", "", "", data['displayName'], "", "", "")
+        category = Category("", row['name'])
+        post.user = user.__dict__
+        post.category = category.__dict__
 
     return json.dumps(post.__dict__)
