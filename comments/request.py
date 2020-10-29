@@ -73,14 +73,15 @@ def create_comment(new_comment):
 
         db_cursor.execute("""
         INSERT INTO Comment
-            ( id, commentSubject, commentBody, userId, postId )
+            ( commentSubject, commentBody, userId, postId )
         VALUES
-            ( ?, ?, ?, ?, ?);
-        """, (new_comment['id'],new_comment['commentSubject'], new_comment['commentBody'], new_comment['userId'], new_comment['postId'], ))
+            ( ?, ?, ?, ? );
+        """, ( new_comment['commentSubject'], new_comment['commentBody'], new_comment['userId'], new_comment['postId'] ))
 
         id = db_cursor.lastrowid
         new_comment['id'] = id
     return json.dumps(new_comment)
+
 
 
 
