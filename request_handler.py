@@ -116,6 +116,10 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         (resource, id) = self.parse_url(self.path)
         new_item = None
+
+        if resource == "login":
+            print(post_body)
+            new_item = handlelogin(post_body)
         
         if resource == "posts":
             print(post_body)
